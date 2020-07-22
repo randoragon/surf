@@ -10,6 +10,7 @@ See the original website at [surf.suckless.org](https://surf.suckless.org)
 - add/remove bookmarks (one per line in ~/.config/surf/bookmarks)
 - custom search engines (prefixes)
 - search in duckduckgo by prefixing a query with '\`'
+- use XA_CLIPBOARD instead of XA_PRIMARY for C-y and C-p operations
 
 ## Applied Patches
 
