@@ -3,6 +3,7 @@
 surf is a simple Web browser based on WebKit/GTK+.
 
 My build of surf, the feather-weight and simple web browser made by suckless.
+See the original website at [surf.suckless.org](https://surf.suckless.org)
 
 ## Applied Patches
 
