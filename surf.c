@@ -556,7 +556,9 @@ loaduri(Client *c, const Arg *a)
 	    g_str_has_prefix(uri, "file://")  ||
 	    g_str_has_prefix(uri, "about:")) {
 		url = g_strdup(uri);
-	} else {
+    } else if (uri[0] == '`') {
+        url = g_strdup_printf("%s%s", searchengine, uri+1);
+    } else {
 		if (uri[0] == '~')
 			apath = untildepath(uri);
 		else

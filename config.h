@@ -6,6 +6,7 @@ static char *styledir       = "~/.local/share/surf/styles/";
 static char *certdir        = "~/.local/share/surf/certificates/";
 static char *cachedir       = "~/.local/share/surf/cache/";
 static char *cookiefile     = "~/.local/share/surf/cookies.txt";
+static char *searchengine   = "https://duckduckgo.com/?q=";
 
 /* Webkit default features */
 /* Highest priority value will be used.
@@ -147,7 +148,7 @@ static SiteSpecific certs[] = {
  */
 static Key keys[] = {
 	/* modifier              keyval          function    arg */
-	{ MODKEY,                GDK_KEY_g,      spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
+	{ MODKEY,                GDK_KEY_s,      spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
 	{ MODKEY,                GDK_KEY_f,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 	{ MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 	{ MODKEY,                GDK_KEY_b,      spawn,      BM_ADD("_SURF_URI") },
