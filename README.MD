@@ -5,11 +5,19 @@ surf is a simple Web browser based on WebKit/GTK+.
 My build of surf, the feather-weight and simple web browser made by suckless.
 See the original website at [surf.suckless.org](https://surf.suckless.org)
 
+## Features
+
+- bookmarks (one per line in ~/.config/surf/bookmarks)
+- custom search engines (prefixes)
+- quick search with duckduckgo
+
 ## Applied Patches
 
 Some patches may have been modified by me to suit my needs better.
 
 - [bookmarking](http://surf.suckless.org/patches/bookmarking/)
+- [searchengines](http://surf.suckless.org/patches/searchengines/)
+- [web search](https://surf.suckless.org/patches/web-search/)
 
 ## Requirements
 

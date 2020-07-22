@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+query="$(dmenu -p Search: -w "$1" </dev/null)"
+[ -z "$query" ] && exit
+
+xprop -id "$1" -f "$2" 8s -set "$2" "$query"
+

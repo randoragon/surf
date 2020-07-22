@@ -35,7 +35,7 @@
 #define LENGTH(x)               (sizeof(x) / sizeof(x[0]))
 #define CLEANMASK(mask)         (mask & (MODKEY|GDK_SHIFT_MASK))
 
-enum { AtomFind, AtomGo, AtomUri, AtomLast };
+enum { AtomFind, AtomSearch, AtomGo, AtomUri, AtomLast };
 
 enum {
 	OnDoc   = WEBKIT_HIT_TEST_RESULT_CONTEXT_DOCUMENT,
@@ -129,6 +129,11 @@ typedef struct {
 } Button;
 
 typedef struct {
+	char *token;
+	char *uri;
+} SearchEngine;
+
+typedef struct {
 	const char *uri;
 	Parameter config[ParameterLast];
 	regex_t re;
@@ -214,6 +219,7 @@ static void webprocessterminated(WebKitWebView *v,
                                  Client *c);
 static void closeview(WebKitWebView *v, Client *c);
 static void destroywin(GtkWidget* w, Client *c);
+static gchar *parseuri(const gchar *uri);
 
 /* Hotkeys */
 static void pasteuri(GtkClipboard *clipboard, const char *text, gpointer d);
@@ -231,6 +237,7 @@ static void togglefullscreen(Client *c, const Arg *a);
 static void togglecookiepolicy(Client *c, const Arg *a);
 static void toggleinspector(Client *c, const Arg *a);
 static void find(Client *c, const Arg *a);
+static void search(Client *c, const Arg *a);
 
 /* Buttons */
 static void clicknavigate(Client *c, const Arg *a, WebKitHitTestResult *h);
@@ -326,6 +333,7 @@ setup(void)
 
 	/* atoms */
 	atoms[AtomFind] = XInternAtom(dpy, "_SURF_FIND", False);
+	atoms[AtomSearch] = XInternAtom(dpy, "_SURF_SEARCH", False);
 	atoms[AtomGo] = XInternAtom(dpy, "_SURF_GO", False);
 	atoms[AtomUri] = XInternAtom(dpy, "_SURF_URI", False);
 
@@ -559,7 +567,7 @@ loaduri(Client *c, const Arg *a)
 			url = g_strdup_printf("file://%s", path);
 			free(path);
 		} else {
-			url = g_strdup_printf("http://%s", uri);
+            url = parseuri(uri);
 		}
 		if (apath != uri)
 			free(apath);
@@ -573,6 +581,19 @@ loaduri(Client *c, const Arg *a)
 		webkit_web_view_load_uri(c->view, url);
 		updatetitle(c);
 	}
+
+	g_free(url);
+}
+
+void
+search(Client *c, const Arg *a)
+{
+	Arg arg;
+	char *url;
+
+	url = g_strdup_printf(searchurl, a->v);
+	arg.v = url;
+	loaduri(c, &arg);
 
 	g_free(url);
 }
@@ -1311,6 +1332,9 @@ processx(GdkXEvent *e, GdkEvent *event, gpointer d)
 				find(c, NULL);
 
 				return GDK_FILTER_REMOVE;
+			} else if (ev->atom == atoms[AtomSearch]) {
+				a.v = getatom(c, AtomSearch);
+				search(c, &a);
 			} else if (ev->atom == atoms[AtomGo]) {
 				a.v = getatom(c, AtomGo);
 				loaduri(c, &a);
@@ -1763,6 +1787,22 @@ destroywin(GtkWidget* w, Client *c)
 	destroyclient(c);
 	if (!clients)
 		gtk_main_quit();
+}
+
+gchar *
+parseuri(const gchar *uri) {
+	guint i;
+
+	for (i = 0; i < LENGTH(searchengines); i++) {
+		if (searchengines[i].token == NULL || searchengines[i].uri == NULL ||
+		    *(uri + strlen(searchengines[i].token)) != ' ')
+			continue;
+		if (g_str_has_prefix(uri, searchengines[i].token))
+			return g_strdup_printf(searchengines[i].uri,
+					       uri + strlen(searchengines[i].token) + 1);
+	}
+
+	return g_strdup_printf("http://%s", uri);
 }
 
 void
