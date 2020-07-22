@@ -9,7 +9,6 @@ See the original website at [surf.suckless.org](https://surf.suckless.org)
 
 - add/remove bookmarks (one per line in ~/.config/surf/bookmarks)
 - custom search engines (prefixes)
-- quick search with duckduckgo
 
 ## Applied Patches
 
@@ -17,7 +16,6 @@ Some patches may have been modified by me to suit my needs better.
 
 - [bookmarking](http://surf.suckless.org/patches/bookmarking/)
 - [searchengines](http://surf.suckless.org/patches/searchengines/)
-- [web search](https://surf.suckless.org/patches/web-search/)
 
 ## Requirements
 
