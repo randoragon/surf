@@ -3,16 +3,14 @@
 bms=~/.config/surf/bookmarks
 icon=/usr/share/icons/Adwaita/96x96/actions/view-pin-symbolic.symbolic.png 
 
-bmcount="$(wc -l -- "$bms")"
-
 mkdir -p ~/.config/surf/
+
 uri="$(xprop -id "$1" "$2" | cut -d \" -f2 | sed 's/.*https*:\/\/\(www\.\)\?//')"
 [ -z "$uri" ] && notify-send -i low -i "$icon" surf "No URI detected" && exit 1
-echo "$uri" | awk '!seen[$0]++' "$bms" >"$bms.tmp"
-mv -- "$bms.tmp" "$bms"
 
-if [ "$(wc -l -- "$bms")" -gt "$bmcount" ]; then
+if ! grep -q "^${uri%%/}\/\?\$" "$bms"; then
+    echo "$uri" >>"$bms"
     notify-send -u low -i "$icon" "Bookmark Added" "<i>$uri</i>"
 else
-    notify-send -u low -i "$icon" "Bookmark Exists"
+    notify-send -u low -i "$icon" "Already Bookmarked"
 fi
