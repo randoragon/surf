@@ -1,15 +1,15 @@
-surf - simple webkit-based browser
-==================================
+# surf - simple webkit-based browser
+
 surf is a simple Web browser based on WebKit/GTK+.
 
-Requirements
-------------
+## Requirements
+
 In order to build surf you need GTK+ and Webkit/GTK+ header files.
 
 In order to use the functionality of the url-bar, also install dmenu[0].
 
-Installation
-------------
+## Installation
+
 Edit config.mk to match your local setup (surf is installed into
 the /usr/local namespace by default).
 
@@ -18,15 +18,15 @@ necessary as root):
 
     make clean install
 
-Running surf
-------------
+## Running surf
+
 run
 	surf [URI]
 
 See the manpage for further options.
 
-Running surf in tabbed
-----------------------
+## Running surf in tabbed
+
 For running surf in tabbed[1] there is a script included in the distribution,
 which is run like this:
 
