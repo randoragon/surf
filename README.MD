@@ -2,6 +2,14 @@
 
 surf is a simple Web browser based on WebKit/GTK+.
 
+My build of surf, the feather-weight and simple web browser made by suckless.
+
+## Applied Patches
+
+Some patches may have been modified by me to suit my needs better.
+
+- [bookmarking](http://surf.suckless.org/patches/bookmarking/)
+
 ## Requirements
 
 In order to build surf you need GTK+ and Webkit/GTK+ header files.
@@ -17,6 +25,12 @@ Afterwards enter the following command to build and install surf (if
 necessary as root):
 
     make clean install
+
+To keep things tidy, some features depend on the existence of external scripts in PATH.
+These scripts follow the "surf-script-*" naming convention, you can install them by
+symlinking to /usr/local/share with this one-liner (execute from the repo root directory):
+
+    find . -maxdepth 1 -name "surf-script-*" -print0 | xargs -0 -I % sudo ln -sTf -- "$(realpath -- "%")" "/usr/local/bin/$(basename -- "%")"
 
 ## Running surf
 
