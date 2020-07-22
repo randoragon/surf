@@ -120,6 +120,11 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 #define BM_ADD(r) {\
         .v = (const char *[]){ "/bin/sh", "-c", "surf-script-addbm $0 $1", winid, r, NULL } \
 }
+/* BM_RM(readprop) */
+#define BM_RM(r) {\
+        .v = (const char *[]){ "/bin/sh", "-c", "surf-script-rmbm $0 $1", winid, r, NULL } \
+}
+
 
 /* styles */
 /*
@@ -153,7 +158,8 @@ static Key keys[] = {
 	{ MODKEY,                GDK_KEY_f,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 	{ MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
  	{ MODKEY,                GDK_KEY_s,      spawn,      SEARCH() },
-	{ MODKEY,                GDK_KEY_m,      spawn,      BM_ADD("_SURF_URI") },
+	{ MODKEY,                GDK_KEY_b,      spawn,      BM_ADD("_SURF_URI") },
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_b,      spawn,      BM_RM("_SURF_URI") },
 
 	{ 0,                     GDK_KEY_Escape, stop,       { 0 } },
 	{ MODKEY,                GDK_KEY_c,      stop,       { 0 } },
@@ -198,7 +204,6 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_s,      toggle,     { .i = JavaScript } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_i,      toggle,     { .i = LoadImages } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_v,      toggle,     { .i = Plugins } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_b,      toggle,     { .i = ScrollBars } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_t,      toggle,     { .i = StrictTLS } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_m,      toggle,     { .i = Style } },
 };

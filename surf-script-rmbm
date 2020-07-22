@@ -1,0 +1,16 @@
+#!/usr/bin/sh
+
+bms=~/.config/surf/bookmarks
+icon=/usr/share/icons/Adwaita/96x96/actions/view-pin-symbolic.symbolic.png 
+
+mkdir -p ~/.config/surf/
+
+uri="$(xprop -id "$1" "$2" | cut -d \" -f2 | sed 's/.*https*:\/\/\(www\.\)\?//')"
+[ -z "$uri" ] && notify-send -i low -i "$icon" surf "No URI detected" && exit 1
+
+if grep -q "^${uri%%/}\/\?\$" "$bms"; then
+    sed -i "/^${uri%%/}\/\?\$/d" "$bms"
+    notify-send -u low -i "$icon" "Bookmark Removed" "<i>$uri</i>"
+else
+    notify-send -u low -i "$icon" "No Such Bookmark"
+fi

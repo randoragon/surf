@@ -7,7 +7,7 @@ See the original website at [surf.suckless.org](https://surf.suckless.org)
 
 ## Features
 
-- bookmarks (one per line in ~/.config/surf/bookmarks)
+- add/remove bookmarks (one per line in ~/.config/surf/bookmarks)
 - custom search engines (prefixes)
 - quick search with duckduckgo
 
