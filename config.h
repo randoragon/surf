@@ -6,6 +6,8 @@ static char *styledir       = "~/.local/share/surf/styles/";
 static char *certdir        = "~/.local/share/surf/certificates/";
 static char *cachedir       = "~/.local/share/surf/cache/";
 static char *cookiefile     = "~/.local/share/surf/cookies.txt";
+static char *dldir          = "~/Downloads/";
+static char *dlstatus       = "~/.local/share/surf/dlstatus/";
 static char *searchengine   = "https://duckduckgo.com/?q=";
 
 /* Webkit default features */
@@ -82,6 +84,14 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
              "xprop -id $1 -f $3 8s -set $3 \"$prop\"", \
              "surf-setprop", winid, r, s, p, NULL \
         } \
+}
+
+#define DLSTATUS { \
+        .v = (const char *[]){ "st", "-n", "surf-dl", "-e", "/bin/sh", "-c",\
+            "while true; do cat $1/* 2>/dev/null || echo \"currently no downloads\";"\
+            "A=; read A; "\
+            "if [ $A = \"clean\" ]; then rm $1/*; fi; clear; done",\
+            "surf-dlstatus", dlstatus, NULL } \
 }
 
 /* DOWNLOAD(URI, referer) */
@@ -199,6 +209,9 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_v,      toggle,     { .i = Plugins } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_t,      toggle,     { .i = StrictTLS } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_m,      toggle,     { .i = Style } },
+
+	/* download-console */
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_d,      spawndls,   { 0 } },
 };
 
 /* button definitions */

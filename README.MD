@@ -11,6 +11,7 @@ See the original website at [surf.suckless.org](https://surf.suckless.org)
 - custom search engines (prefixes)
 - search in duckduckgo by prefixing a query with '\`'
 - use XA_CLIPBOARD instead of XA_PRIMARY for C-y and C-p operations
+- spawn download history in a terminal with <C-S-d>
 
 ## Applied Patches
 
@@ -19,6 +20,7 @@ Some patches may have been modified by me to suit my needs better.
 - [bookmarking](http://surf.suckless.org/patches/bookmarking/)
 - [searchengines](http://surf.suckless.org/patches/searchengines/)
 - [spacesearch](http://surf.suckless.org/patches/spacesearch/)
+- [dlconsole](https://surf.suckless.org/patches/dlconsole/)
 
 ## Requirements
 
