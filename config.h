@@ -64,6 +64,7 @@ static SearchEngine searchengines[] = {
     { "g",   "http://www.google.com/search?q=%s"    },
     { "aw",  "http://wiki.archlinux.org/?search=%s" },
     { "i",   "http://duckduckgo.com/?q=%s&t=hk&iax=images&ia=images" },
+    { "yt",   "http://youtube.com/results?search_query=%s" },
 };
 
 /* default window size: width, height */
