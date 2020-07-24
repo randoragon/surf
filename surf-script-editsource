@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+tmpfile=$(mktemp -p /tmp surf-editsource.XXXXX)
+trap  'rm "$tmpfile"' 0 1 15
+cat >"$tmpfile"
+st -e "$EDITOR" "$tmpfile"

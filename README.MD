@@ -12,6 +12,8 @@ See the original website at [surf.suckless.org](https://surf.suckless.org)
 - search in duckduckgo by prefixing a query with '\`'
 - use XA_CLIPBOARD instead of XA_PRIMARY for C-y and C-p operations
 - spawn download history in a terminal with <C-S-d>
+- edit page source in $EDITOR
+- follow links with keyboard shortcuts + dmenu
 
 ## Applied Patches
 
@@ -21,6 +23,7 @@ Some patches may have been modified by me to suit my needs better.
 - [searchengines](http://surf.suckless.org/patches/searchengines/)
 - [spacesearch](http://surf.suckless.org/patches/spacesearch/)
 - [dlconsole](https://surf.suckless.org/patches/dlconsole/)
+- [externalpipe](https://surf.suckless.org/patches/externalpipe/)
 
 ## Requirements
 

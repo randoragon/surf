@@ -151,6 +151,14 @@ static SiteSpecific certs[] = {
 
 #define MODKEY GDK_CONTROL_MASK
 
+static char *linkselect_curwin [] = { "/bin/sh", "-c",
+	"surf-script-linkselect $0 'Follow' | xargs -r xprop -id $0 -f _SURF_GO 8s -set _SURF_GO", winid, NULL
+};
+static char *linkselect_newwin [] = { "/bin/sh", "-c",
+	"surf-script-linkselect $0 'Follow (new window)' | xargs -r surf", winid, NULL
+};
+static char *editsource[] = { "/bin/sh", "-c", "surf-script-editsource", NULL };
+
 /* hotkeys */
 /*
  * If you use anything else but MODKEY and GDK_SHIFT_MASK, don't forget to
@@ -159,10 +167,13 @@ static SiteSpecific certs[] = {
 static Key keys[] = {
 	/* modifier              keyval          function    arg */
 	{ MODKEY,                GDK_KEY_s,      spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
-	{ MODKEY,                GDK_KEY_f,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 	{ MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 	{ MODKEY,                GDK_KEY_b,      spawn,      BM_ADD("_SURF_URI") },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_b,      spawn,      BM_RM("_SURF_URI") },
+
+    { MODKEY,                GDK_KEY_f, externalpipe, { .v = linkselect_curwin } },
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_f, externalpipe, { .v = linkselect_newwin } },
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_u, externalpipe, { .v = editsource        } },
 
 	{ 0,                     GDK_KEY_Escape, stop,       { 0 } },
 	{ MODKEY,                GDK_KEY_c,      stop,       { 0 } },
@@ -202,7 +213,6 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_o,      toggleinspector,    { 0 } },
 
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_c,      toggle,     { .i = CaretBrowsing } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_f,      toggle,     { .i = FrameFlattening } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_g,      toggle,     { .i = Geolocation } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_s,      toggle,     { .i = JavaScript } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_i,      toggle,     { .i = LoadImages } },
