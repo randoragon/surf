@@ -9,7 +9,8 @@ uri="$(xprop -id "$1" "$2" | cut -d \" -f2 | sed 's/.*https*:\/\/\(www\.\)\?//')
 [ -z "$uri" ] && notify-send -i low -i "$icon" surf "No URI detected" && exit 1
 
 if grep -q "^${uri%%/}\/\?\$" "$bms"; then
-    sed -i "/^${uri%%/}\/\?\$/d" "$bms"
+    query="$(printf "%s" "$uri" | sed -e 's/\//\\\//g' -e 's/\./\\\./g')"
+    sed -i "/^${query%%/}\/\?\$/d" "$bms"
     notify-send -u low -i "$icon" "Bookmark Removed" "<i>$uri</i>"
 else
     notify-send -u low -i "$icon" "No Such Bookmark"
