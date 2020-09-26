@@ -41,12 +41,6 @@ necessary as root):
 
     make clean install
 
-To keep things tidy, some features depend on the existence of external scripts in PATH.
-These scripts follow the "surf-script-*" naming convention, you can install them by
-symlinking to /usr/local/share with this one-liner (execute from the repo root directory):
-
-    find . -maxdepth 1 -name "surf-script-*" -print0 | xargs -0 -I % sudo ln -sTf -- "$(realpath -- "%")" "/usr/local/bin/$(basename -- "%")"
-
 ## Running surf
 
 run
