@@ -66,7 +66,7 @@ install: all
 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
 	sed "s/VERSION/$(VERSION)/g" < surf.1 > $(DESTDIR)$(MANPREFIX)/man1/surf.1
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/surf.1
-	find $(PWD) -maxdepth 1 -name "surf-script-*" -print0 | xargs -0 -I @ sudo ln -sTf -- "$$(realpath -- "@")" "/usr/local/bin/$$(basename -- "@")"
+	find $(PWD) -maxdepth 1 -name "surf-script-*" -print0 | xargs -0 -I @ cp -f -- "@" $(DESTDIR)$(PREFIX)/bin
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/surf
