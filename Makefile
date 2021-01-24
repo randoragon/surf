@@ -67,12 +67,14 @@ install: all
 	sed "s/VERSION/$(VERSION)/g" < surf.1 > $(DESTDIR)$(MANPREFIX)/man1/surf.1
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/surf.1
 	find $(PWD) -maxdepth 1 -name "surf-script-*" -print0 | xargs -0 -I @ cp -f -- "@" $(DESTDIR)$(PREFIX)/bin
+	chmod 755 $(DESTDIR)$(PREFIX)/bin/surf-script-*
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/surf
 	rm -f $(DESTDIR)$(MANPREFIX)/man1/surf.1
 	rm -f $(DESTDIR)$(LIBDIR)/libsurf-webext.so
 	- rmdir $(DESTDIR)$(LIBDIR)
+	rm -f $(DESTDIR)$(PREFIX)/bin/surf-script-*
 
 .SUFFIXES: .so .o .c
 .PHONY: all options clean-dist clean dist install uninstall
