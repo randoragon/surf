@@ -34,7 +34,7 @@ static Parameter defconfig[ParameterLast] = {
 	[HideBackground]      =       { { .i = 0 },     },
 	[Inspector]           =       { { .i = 1 },     },
 	[Java]                =       { { .i = 1 },     },
-	[JavaScript]          =       { { .i = 1 },     },
+	[JavaScript]          =       { { .i = 0 },     },
 	[KioskMode]           =       { { .i = 0 },     },
 	[LoadImages]          =       { { .i = 1 },     },
 	[MediaManualPlay]     =       { { .i = 1 },     },

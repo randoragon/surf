@@ -33,8 +33,6 @@ In order to use the functionality of the url-bar, also install dmenu[0].
 
 ## Installation
 
-Arch Linux users can install the `surf-randoragon-git` AUR package.
-
 Edit config.mk to match your local setup (surf is installed into
 the /usr/local namespace by default).
 
