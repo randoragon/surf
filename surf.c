@@ -234,6 +234,7 @@ static void togglecookiepolicy(Client *c, const Arg *a);
 static void toggleinspector(Client *c, const Arg *a);
 static void find(Client *c, const Arg *a);
 static void externalpipe(Client *c, const Arg *a);
+static void quit(Client *c, const Arg *a);
 
 /* Buttons */
 static void clicknavigate(Client *c, const Arg *a, WebKitHitTestResult *h);
@@ -2132,6 +2133,13 @@ spawndls(Client *c, const Arg *a)
 {
 	Arg arg = (Arg)DLSTATUS;
 	spawn(c, &arg);
+}
+
+void
+quit(Client *c, const Arg *a)
+{
+	cleanup();
+	exit(0);
 }
 
 int

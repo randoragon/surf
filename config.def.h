@@ -167,51 +167,50 @@ static char *editsource[] = { "/bin/sh", "-c", "surf-script-editsource", NULL };
  */
 static Key keys[] = {
     /* modifier              keyval          function    arg */
-    { MODKEY,                GDK_KEY_s,      spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
-    { MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
-    { MODKEY,                GDK_KEY_b,      spawn,      BM_ADD("_SURF_URI") },
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_b,      spawn,      BM_RM("_SURF_URI") },
+    { 0,                     GDK_KEY_s,      spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
+    { 0,                     GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
+    { 0,                     GDK_KEY_b,      spawn,      BM_ADD("_SURF_URI") },
+    { GDK_SHIFT_MASK,        GDK_KEY_b,      spawn,      BM_RM("_SURF_URI")  },
 
-    { MODKEY,                GDK_KEY_f, externalpipe, { .v = linkselect_curwin } },
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_f, externalpipe, { .v = linkselect_newwin } },
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_u, externalpipe, { .v = editsource        } },
+    { 0,                     GDK_KEY_f, externalpipe, { .v = linkselect_curwin } },
+    { GDK_SHIFT_MASK,        GDK_KEY_f, externalpipe, { .v = linkselect_newwin } },
+    { GDK_SHIFT_MASK,        GDK_KEY_u, externalpipe, { .v = editsource        } },
 
     { 0,                     GDK_KEY_Escape, stop,       { 0 } },
-    { MODKEY,                GDK_KEY_c,      stop,       { 0 } },
 
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_r,      reload,     { .i = 1 } },
-    { MODKEY,                GDK_KEY_r,      reload,     { .i = 0 } },
+    { GDK_SHIFT_MASK,        GDK_KEY_r,      reload,     { .i = 1 } },
+    { 0,                     GDK_KEY_r,      reload,     { .i = 0 } },
 
-    { MODKEY,                GDK_KEY_i,      navigate,   { .i = +1 } },
-    { MODKEY,                GDK_KEY_o,      navigate,   { .i = -1 } },
+    { 0,                     GDK_KEY_i,      navigate,   { .i = +1 } },
+    { 0,                     GDK_KEY_o,      navigate,   { .i = -1 } },
 
     /* vertical and horizontal scrolling, in viewport percentage */
-    { MODKEY,                GDK_KEY_j,      scrollv,    { .i = +10 } },
-    { MODKEY,                GDK_KEY_k,      scrollv,    { .i = -10 } },
-    { MODKEY,                GDK_KEY_d,      scrollv,    { .i = +50 } },
-    { MODKEY,                GDK_KEY_u,      scrollv,    { .i = -50 } },
-    { MODKEY,                GDK_KEY_l,      scrollh,    { .i = +10 } },
-    { MODKEY,                GDK_KEY_h,      scrollh,    { .i = -10 } },
+    { 0,                     GDK_KEY_j,      scrollv,    { .i = +10 } },
+    { 0,                     GDK_KEY_k,      scrollv,    { .i = -10 } },
+    { 0,                     GDK_KEY_d,      scrollv,    { .i = +50 } },
+    { 0,                     GDK_KEY_u,      scrollv,    { .i = -50 } },
+    { 0,                     GDK_KEY_l,      scrollh,    { .i = +10 } },
+    { 0,                     GDK_KEY_h,      scrollh,    { .i = -10 } },
 
 
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_j,      zoom,       { .i = -1 } },
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_k,      zoom,       { .i = +1 } },
-    { MODKEY,                GDK_KEY_minus,  zoom,       { .i = -1 } },
-    { MODKEY,                GDK_KEY_equal,  zoom,       { .i = +1 } },
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_plus,   zoom,       { .i =  0 } },
+    { GDK_SHIFT_MASK,        GDK_KEY_j,      zoom,       { .i = -1 } },
+    { GDK_SHIFT_MASK,        GDK_KEY_k,      zoom,       { .i = +1 } },
+    { 0,                     GDK_KEY_minus,  zoom,       { .i = -1 } },
+    { 0,                     GDK_KEY_equal,  zoom,       { .i = +1 } },
+    { 0,                     GDK_KEY_0,      zoom,       { .i =  0 } },
 
-    { MODKEY,                GDK_KEY_p,      clipboard,  { .i = 1 } },
-    { MODKEY,                GDK_KEY_y,      clipboard,  { .i = 0 } },
+    { 0,                     GDK_KEY_p,      clipboard,  { .i = 1 } },
+    { 0,                     GDK_KEY_y,      clipboard,  { .i = 0 } },
 
-    { MODKEY,                GDK_KEY_n,      find,       { .i = +1 } },
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_n,      find,       { .i = -1 } },
+    { 0,                     GDK_KEY_n,      find,       { .i = +1 } },
+    { GDK_SHIFT_MASK,        GDK_KEY_n,      find,       { .i = -1 } },
 
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_p,      print,      { 0 } },
+    { MODKEY,                GDK_KEY_p,      print,      { 0 } },
     { MODKEY,                GDK_KEY_t,      showcert,   { 0 } },
 
     { MODKEY|GDK_SHIFT_MASK, GDK_KEY_a,      togglecookiepolicy, { 0 } },
-    { 0,                     GDK_KEY_F11,    togglefullscreen,   { 0 } },
-    { MODKEY|GDK_SHIFT_MASK, GDK_KEY_o,      toggleinspector,    { 0 } },
+    { GDK_SHIFT_MASK,        GDK_KEY_o,      toggleinspector,    { 0 } },
+    { 0,                     GDK_KEY_F12,    toggleinspector,    { 0 } },
 
     { MODKEY|GDK_SHIFT_MASK, GDK_KEY_c,      toggle,     { .i = CaretBrowsing } },
     { MODKEY|GDK_SHIFT_MASK, GDK_KEY_g,      toggle,     { .i = Geolocation } },
@@ -223,6 +222,9 @@ static Key keys[] = {
 
     /* download-console */
     { MODKEY|GDK_SHIFT_MASK, GDK_KEY_d,      spawndls,   { 0 } },
+
+    /* quit */
+    { 0,                     GDK_KEY_q,      quit,       { 0 } },
 };
 
 /* button definitions */

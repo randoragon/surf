@@ -10,7 +10,7 @@ See the original website at [surf.suckless.org](https://surf.suckless.org)
 - add/remove bookmarks (one per line in ~/.config/surf/bookmarks)
 - custom search engines (prefixes)
 - search in duckduckgo by prefixing a query with '\`'
-- use XA_CLIPBOARD instead of XA_PRIMARY for C-y and C-p operations
+- use XA\_CLIPBOARD instead of XA\_PRIMARY for C-y and C-p operations
 - spawn download history in a terminal with <C-S-d>
 - edit page source in $EDITOR
 - follow links with keyboard shortcuts + dmenu
@@ -24,6 +24,7 @@ Some patches may have been modified by me to suit my needs better.
 - [spacesearch](http://surf.suckless.org/patches/spacesearch/)
 - [dlconsole](https://surf.suckless.org/patches/dlconsole/)
 - [externalpipe](https://surf.suckless.org/patches/externalpipe/)
+- [quit hotkey](https://surf.suckless.org/patches/quit-hotkey/)
 
 ## Requirements
 
