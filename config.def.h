@@ -28,7 +28,7 @@ static Parameter defconfig[ParameterLast] = {
     [DiskCache]           =       { { .i = 1 },     },
     [DNSPrefetch]         =       { { .i = 0 },     },
     [FileURLsCrossAccess] =       { { .i = 0 },     },
-    [FontSize]            =       { { .i = 12 },    },
+    [FontSize]            =       { { .i = 16 },    },
     [FrameFlattening]     =       { { .i = 0 },     },
     [Geolocation]         =       { { .i = 0 },     },
     [HideBackground]      =       { { .i = 0 },     },
