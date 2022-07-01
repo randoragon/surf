@@ -223,6 +223,7 @@ static void reload(Client *c, const Arg *a);
 static void print(Client *c, const Arg *a);
 static void showcert(Client *c, const Arg *a);
 static void clipboard(Client *c, const Arg *a);
+static void xdgopen(Client *c, const Arg *a); /* Opens a.v URI with xdg-open */
 static void zoom(Client *c, const Arg *a);
 static void scrollv(Client *c, const Arg *a);
 static void scrollh(Client *c, const Arg *a);
@@ -1914,6 +1915,21 @@ clipboard(Client *c, const Arg *a)
 		                       GDK_SELECTION_CLIPBOARD), c->targeturi
 		                       ? c->targeturi : geturi(c), -1);
 	}
+}
+
+void
+xdgopen(Client *c, const Arg *a)
+{
+	const char *uri = a->v;
+	if (uri == NULL) {
+		/* By convention this means target/current URI */
+		uri = c->targeturi ? c->targeturi : geturi(c);
+	}
+	const size_t cmdlen = strlen("xdg-open ''") + strlen(uri);
+	char *const cmd = malloc((cmdlen + 1) * sizeof(char));
+	sprintf(cmd, "xdg-open '%s'", uri);
+	system(cmd);
+	free(cmd);
 }
 
 void

@@ -201,6 +201,7 @@ static Key keys[] = {
 
     { 0,                     GDK_KEY_p,      clipboard,  { .i = 1 } },
     { 0,                     GDK_KEY_y,      clipboard,  { .i = 0 } },
+    { 0,                     GDK_KEY_g,      xdgopen,    { .v = NULL } },
 
     { 0,                     GDK_KEY_n,      find,       { .i = +1 } },
     { GDK_SHIFT_MASK,        GDK_KEY_n,      find,       { .i = -1 } },

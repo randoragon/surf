@@ -14,6 +14,7 @@ See the original website at [surf.suckless.org](https://surf.suckless.org)
 - spawn download history in a terminal with <C-S-d>
 - edit page source in $EDITOR
 - follow links with keyboard shortcuts + dmenu
+- open links in the default browser (`xdg-open`)
 
 ## Applied Patches
 
