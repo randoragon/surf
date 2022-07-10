@@ -181,8 +181,8 @@ static Key keys[] = {
     { GDK_SHIFT_MASK,        GDK_KEY_r,      reload,     { .i = 1 } },
     { 0,                     GDK_KEY_r,      reload,     { .i = 0 } },
 
-    { 0,                     GDK_KEY_i,      navigate,   { .i = +1 } },
-    { 0,                     GDK_KEY_o,      navigate,   { .i = -1 } },
+    { MODKEY,                GDK_KEY_i,      navigate,   { .i = +1 } },
+    { MODKEY,                GDK_KEY_o,      navigate,   { .i = -1 } },
 
     /* vertical and horizontal scrolling, in viewport percentage */
     { 0,                     GDK_KEY_j,      scrollv,    { .i = +10 } },
@@ -191,6 +191,8 @@ static Key keys[] = {
     { 0,                     GDK_KEY_u,      scrollv,    { .i = -50 } },
     { 0,                     GDK_KEY_l,      scrollh,    { .i = +10 } },
     { 0,                     GDK_KEY_h,      scrollh,    { .i = -10 } },
+    { 0,                     GDK_KEY_g,      scrollvmax, { .i = -100 } },
+    { GDK_SHIFT_MASK,        GDK_KEY_g,      scrollvmax, { .i = +100 } },
 
 
     { GDK_SHIFT_MASK,        GDK_KEY_j,      zoom,       { .i = -1 } },
@@ -201,7 +203,7 @@ static Key keys[] = {
 
     { 0,                     GDK_KEY_p,      clipboard,  { .i = 1 } },
     { 0,                     GDK_KEY_y,      clipboard,  { .i = 0 } },
-    { 0,                     GDK_KEY_g,      xdgopen,    { .v = NULL } },
+    { 0,                     GDK_KEY_w,      xdgopen,    { .v = NULL } },
 
     { 0,                     GDK_KEY_n,      find,       { .i = +1 } },
     { GDK_SHIFT_MASK,        GDK_KEY_n,      find,       { .i = -1 } },

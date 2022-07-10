@@ -226,6 +226,7 @@ static void clipboard(Client *c, const Arg *a);
 static void xdgopen(Client *c, const Arg *a); /* Opens a.v URI with xdg-open */
 static void zoom(Client *c, const Arg *a);
 static void scrollv(Client *c, const Arg *a);
+static void scrollvmax(Client *c, const Arg *a);
 static void scrollh(Client *c, const Arg *a);
 static void navigate(Client *c, const Arg *a);
 static void stop(Client *c, const Arg *a);
@@ -1974,6 +1975,13 @@ void
 scrollh(Client *c, const Arg *a)
 {
 	msgext(c, 'h', a);
+}
+
+void
+scrollvmax(Client *c, const Arg *a)
+{
+	for (int i = 0; i < 100; i++)
+		msgext(c, 'v', a);
 }
 
 void
